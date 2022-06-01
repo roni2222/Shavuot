@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>שבועות</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!--ג'ייקו'רי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) וזה בעצם ג'ווסקריפט ופה שמנו בגרסה 3.6.0-->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--ג'ייקו'רי יואיי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) חייב לשים קודם כל קישור לג'ייקו'רי כדי להשתמש בקישור הזה ליואיי ופה שמנו בגרסה 1.13.1-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> <!-- סי אס אס של ג'ייק'רי יואיי, תמיד נשתמש בזה עוזר לאפקטים גם הוא קובץ אחד ויחיד לפי גרסה-->
+
+    <style>
+        /*הוספת פונטים שהורדתי למחשב*/
+        @font-face {
+            font-family: "Felix007 Medium Regular";
+            src: url("fonts/Felix007 Medium Regular.ttf");
+        }
+
+        .Font {
+            font-family: "Felix007 Medium Regular";
+        }
+
+        @font-face {
+            font-family: "habibi-regular-fm";
+            src: url("fonts/habibi-regular-fm.ttf");
+        }
+
+        .Font {
+            font-family: "habibi-regular-fm";
+        }
+
+        @font-face {
+            font-family: "AmaticSC-Regular";
+            src: url("fonts/AmaticSC-Regular.ttf");
+        }
+
+        .Font {
+            font-family: "AmaticSC-Regular";
+        }
+
+        html {
+            min-height: 100%;
+            background-image: url(images/background.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+    </style>
+
+    <script type="text/javascript">
+    $.support.cors = true; // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://bsite.net/hinuch/RecipeWebForm.aspx/getRecipes',
+                type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים,
+                dataType: 'json', //הסוג הוא אובייקט
+                contentType: 'application/json',
+                crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+
+                success: function (success) {
+                    $('#RecipesTbl').html(success.d);
+                },
+
+                error: function (error) {
+                    debugger;
+                }
+            }); 
+        })
+           
+    </script>
+</head>
+
+<body>
+    <div style="font-family:habibi-regular-fm; font-size:32px; direction:rtl; text-align:center;">שבועות</div>
+    <div style="font-family:Gisha; font-size:18px; direction:rtl; font-weight:bold;">"וְהָיָה כִּי-תָבוֹא אֶל-הָאָרֶץ אֲשֶׁר ה' אֱלֹהֶיךָ נֹתֵן לְךָ נַחֲלָה וִירִשְׁתָּהּ וְיָשַׁבְתָּ בָּהּ" (דברים כו,פס' 1)</div>
+    <div style="font-family:Felix007 Medium Regular; font-size:20px; direction:rtl;">חג שבועות, הידוע בכינוי "חג מתן תורה" הוא אחד משלושת הרגלים: פסח, שבועות וסוכות- מועדים בהם היו עולים בני ישראל אל בית המקדש בירושלים. החג שונה משני הרגלים האחרים בכך שלא נקבע לו תאריך קבוע במקרא ומועדו נקבע על פי חג הפסח. מנהגי החג הינם: אכילת מאכלי חלב, קריאת מגילת רות וכן קריאת עשרת הדיברות. </div>
+    <div style="font-family:Felix007 Medium Regular; font-size:20px; direction:rtl; text-align:center;">מתכונים לחג-</div>
+    <div id="RecipesTbl" dir="rtl" style="text-align:center; font-size:22px; font-family:Felix007 Medium Regular;"></div>
+</body>
+
+</html>
