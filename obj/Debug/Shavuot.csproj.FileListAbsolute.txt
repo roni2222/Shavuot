@@ -1,0 +1,9 @@
+D:\___לימודים___\projects\Shavuot\bin\Shavuot.dll.config
+D:\___לימודים___\projects\Shavuot\bin\Shavuot.dll
+D:\___לימודים___\projects\Shavuot\bin\Shavuot.pdb
+D:\___לימודים___\projects\Shavuot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\___לימודים___\projects\Shavuot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\___לימודים___\projects\Shavuot\obj\Debug\Shavuot.csprojResolveAssemblyReference.cache
+D:\___לימודים___\projects\Shavuot\obj\Debug\Shavuot.csproj.CoreCompileInputs.cache
+D:\___לימודים___\projects\Shavuot\obj\Debug\Shavuot.dll
+D:\___לימודים___\projects\Shavuot\obj\Debug\Shavuot.pdb
