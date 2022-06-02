@@ -96,6 +96,25 @@
                             $("#RecipeTextOpener2").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
                                 $("#RecipeWindow2").dialog("open");
                             });
+
+                            $("#RecipeWindow3").dialog({ //סולמית מתייחסת ל-id
+                                autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                                show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                                    effect: "blind",
+                                    duration: 1000
+                                },
+                                hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                                    effect: "explode",
+                                    duration: 1000
+                                }
+                            });
+
+                            $("#RecipeImageOpener3").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                                $("#RecipeWindow3").dialog("open");
+                            });
+                            $("#RecipeTextOpener3").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                                $("#RecipeWindow3").dialog("open");
+                            });
                         },
 
                         error: function (error) {
