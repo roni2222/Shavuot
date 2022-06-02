@@ -46,27 +46,70 @@
         }
     </style>
 
-    <script type="text/javascript">
-    $.support.cors = true; // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+    <script>
+ //דולר- זה ג'ייקו'רי ששמים לו קישור, דיאלוג- זה ג'ייקו'רי יואיי ששמים לו קישור
+        $(function () { // דולר פנקשיין זה כאשר הדף עולה זה כמו דוקומט רדי- אם לא היינו שמים את זה היה קורס בהמשך כי הוא לא מכיר את ההמשך
+            $("#RecipeWindow1").dialog({ //סולמית מתייחסת ל-id
+                autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $("#RecipeImageOpener1").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                $("#RecipeWindow1").dialog("open");
+            });
+            $("#RecipeTextOpener1").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                $("#RecipeWindow1").dialog("open");
+            });
+
+            $("#RecipeWindow2").dialog({ //סולמית מתייחסת ל-id
+                autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $("#RecipeImageOpener2").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                $("#RecipeWindow2").dialog("open");
+            });
+            $("#RecipeTextOpener2").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                $("#RecipeWindow2").dialog("open");
+            });
+        });
+        </script>
+
+            <script type="text/javascript">
+                $.support.cors = true; // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
 
         $(document).ready(function () {
-            $.ajax({
-                url: 'https://bsite.net/hinuch/RecipeWebForm.aspx/getRecipes',
-                type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים,
-                dataType: 'json', //הסוג הוא אובייקט
-                contentType: 'application/json',
-                crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+                    $.ajax({
+                        url: 'https://bsite.net/hinuch/RecipeWebForm.aspx/getRecipes',
+                        type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים,
+                        dataType: 'json', //הסוג הוא אובייקט
+                        contentType: 'application/json',
+                        crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
 
-                success: function (success) {
-                    $('#RecipesTbl').html(success.d);
-                },
+                        success: function (success) {
+                            $('#RecipesTbl').html(success.d);
+                        },
 
-                error: function (error) {
-                    debugger;
-                }
-            }); 
+                        error: function (error) {
+                            debugger;
+                        }
+                    });
         })
-           
+
     </script>
 </head>
 
@@ -76,6 +119,11 @@
     <div style="font-family:Felix007 Medium Regular; font-size:20px; direction:rtl;">חג שבועות, הידוע בכינוי "חג מתן תורה" הוא אחד משלושת הרגלים: פסח, שבועות וסוכות- מועדים בהם היו עולים בני ישראל אל בית המקדש בירושלים. החג שונה משני הרגלים האחרים בכך שלא נקבע לו תאריך קבוע במקרא ומועדו נקבע על פי חג הפסח. מנהגי החג הינם: אכילת מאכלי חלב, קריאת מגילת רות וכן קריאת עשרת הדיברות. </div>
     <div style="font-family:Felix007 Medium Regular; font-size:20px; direction:rtl; text-align:center;">מתכונים לחג-</div>
     <div id="RecipesTbl" dir="rtl" style="text-align:center; font-size:20px; font-family:Felix007 Medium Regular;"></div>
+    
+    <div id="HolidayNameWindow" title="">
+        <p style="font-family: Gisha; text-align: right;"> </p>
+    </div>
+
 </body>
 
 </html>
