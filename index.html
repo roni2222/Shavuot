@@ -95,78 +95,177 @@
             <script type="text/javascript">
                 $.support.cors = true; // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
 
-        $(document).ready(function () {
-                    $.ajax({
-                        url: 'https://bsite.net/hinuch/RecipeWebForm.aspx/getRecipes',
-                        type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים,
-                        dataType: 'json', //הסוג הוא אובייקט
-                        contentType: 'application/json',
-                        crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+                var recipeData = [
+                    {
+                        recipeName: 'עוגת ביסקוויטים',
+                        ingredients: '500 מ"ל שמנת מתוקה, 2 חפיסות אינסטנט פודינג וניל, 2 כוסות חלב, 1/2 כוס סוכר, 500 גרם גבינה לבנה, 1 חבילת ביסקוויטים',
+                        preperation: 'מקציפים שמנת מתוקה עם פודינג, חלב וסוכר לקבלת קרם יציב. מסדרים את הביסקוויטים בשכבה אחידה בתחתית התבנית. יוצקים מעל את מחצית הקרם ומיישרים. מסדרים מעל שכבה נוספת של ביסקוויטים טבולים ומכסים ביתרת הקרם. מיישרים את פני הקרם ומעבירים את העוגה למקפיא לשעתיים להתקשות. ניתן להוסיף ציפוי שוקולד.',
+                        imgUrl: 'images/biscuitCake.jpg'
+                    },
+                    {
+                        recipeName: 'מאפה גבינות',
+                        ingredients: '2 כוסות קמח לבן, שקית אבקת אפיה, חצי כפית מלח, ביצה גדולה, 50 גרם חמאה מומסת, 250 גרם גבינה לבנה, 3/4 כוס גבינות מגורדות- מוצרלה, פרמזן, בולגרית',
+                        preperation: 'מחממים תנור מראש ל-180 מעלות. מערבבים את כל החומרים לפי הסדר הרשום עד לקבלת תערובת בצקית אחידה, רכה ודביקה ולאחר מכן יוצקים את התערובת לתבנית. מברישים את החלק העליון במעט שמן ומפזרים מעל קצת שומשום/קצח. מכניסים לתנור החם ואופים במשך כ-30 דקות עד להזהבה קלה.',
+                        imgUrl: 'images/cheeseBread.jpg'
+                    },
+                    {
+                        recipeName: 'פיצה',
+                        ingredients: '2 שקיות פתיתי מוצרלה, 3 כוסות קמח, 1.5 שמרים יבשים, 2 כפיות מלח, 8 כפות שמן זית, 5 כפות רסק עגבניות',
+                        preperation: 'מערבבים בקערה את הקמח, השמרים והמלח. מוסיפים את שאר חומרי הבצק ולשים היטב במיקסר. ממשיכים ללוש מספר דקות בידיים. מניחים את הבצק בצד להתפחה קלה במשך כ-20 דקות. מחממים תנור לחום של 200 מעלות. מורחים את הרוטב על הבצק ומפזרים את הגבינה למעלה. מוציאים מהתנור כשהגבינה נמסה לגמרי וכשקצוות הבצק הזהיבו מעט.',
+                        imgUrl: 'images/pizza.jpg'
+                    }
+                ];
 
-                        success: function (success) {
-                            $('#RecipesTbl').html(success.d);
-                            $("#RecipeWindow1").dialog({ //סולמית מתייחסת ל-id
-                                autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                                show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
-                                    effect: "blind",
-                                    duration: 1000
-                                },
-                                hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
-                                    effect: "explode",
-                                    duration: 1000
-                                }
-                            });
 
-                            $("#RecipeImageOpener1").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
-                                $("#RecipeWindow1").dialog("open");
-                            });
-                            $("#RecipeTextOpener1").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
-                                $("#RecipeWindow1").dialog("open");
-                            });
+                $(document).ready(function () {
 
-                            $("#RecipeWindow2").dialog({ //סולמית מתייחסת ל-id
-                                autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                                show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
-                                    effect: "blind",
-                                    duration: 1000
-                                },
-                                hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
-                                    effect: "explode",
-                                    duration: 1000
-                                }
-                            });
+                    var recipeImageCounter = 1;
+                    var recipeTable = "<table dir='rtl'><tr>";
+                    $.each(recipeData, function (i, recipe) {
 
-                            $("#RecipeImageOpener2").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
-                                $("#RecipeWindow2").dialog("open");
-                            });
-                            $("#RecipeTextOpener2").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
-                                $("#RecipeWindow2").dialog("open");
-                            });
+                        recipeTable += "<td>" +
+                            "<img id='RecipeImageOpener" + recipeImageCounter + "' src='" + recipe.imgUrl + "' border='0' />" +
+                            "<div id='RecipeTextOpener" + recipeImageCounter + "' style='text-decoration:underline; color:#0000cc;'> " + recipe.recipeName + "</div>" +
+                            "</td>" + 
+                            "<div id='RecipeWindow" + recipeImageCounter + "' title='" + recipe.recipeName + "'>" +
+                            "<b> המרכיבים - </b > " + recipe.ingredients +
+                            "<br/><b>אופן ההכנה - </b>" + recipe.preperation +
+                            "</div>"
+                        recipeImageCounter++;
+                    });
+                    recipeTable += "</tr></table>";
 
-                            $("#RecipeWindow3").dialog({ //סולמית מתייחסת ל-id
-                                autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                                show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
-                                    effect: "blind",
-                                    duration: 1000
-                                },
-                                hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
-                                    effect: "explode",
-                                    duration: 1000
-                                }
-                            });
+                    $('#RecipesTbl').html(recipeTable);
 
-                            $("#RecipeImageOpener3").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
-                                $("#RecipeWindow3").dialog("open");
-                            });
-                            $("#RecipeTextOpener3").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
-                                $("#RecipeWindow3").dialog("open");
-                            });
+                    $("#RecipeWindow1").dialog({ //סולמית מתייחסת ל-id
+                        autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                        show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                            effect: "blind",
+                            duration: 1000
                         },
-
-                        error: function (error) {
-                            debugger;
+                        hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                            effect: "explode",
+                            duration: 1000
                         }
                     });
+
+                    $("#RecipeImageOpener1").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                        $("#RecipeWindow1").dialog("open");
+                    });
+                    $("#RecipeTextOpener1").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                        $("#RecipeWindow1").dialog("open");
+                    });
+
+                    $("#RecipeWindow2").dialog({ //סולמית מתייחסת ל-id
+                        autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                        show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                            effect: "blind",
+                            duration: 1000
+                        },
+                        hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                            effect: "explode",
+                            duration: 1000
+                        }
+                    });
+
+                    $("#RecipeImageOpener2").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                        $("#RecipeWindow2").dialog("open");
+                    });
+                    $("#RecipeTextOpener2").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                        $("#RecipeWindow2").dialog("open");
+                    });
+
+                    $("#RecipeWindow3").dialog({ //סולמית מתייחסת ל-id
+                        autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                        show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                            effect: "blind",
+                            duration: 1000
+                        },
+                        hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                            effect: "explode",
+                            duration: 1000
+                        }
+                    });
+
+                    $("#RecipeImageOpener3").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                        $("#RecipeWindow3").dialog("open");
+                    });
+                    $("#RecipeTextOpener3").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                        $("#RecipeWindow3").dialog("open");
+                    });
+
+
+                    //$.ajax({
+                    //    url: 'https://bsite.net/hinuch/RecipeWebForm.aspx/getRecipes',
+                    //    type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים,
+                    //    dataType: 'json', //הסוג הוא אובייקט
+                    //    contentType: 'application/json',
+                    //    crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+
+                    //    success: function (success) {
+                    //        $('#RecipesTbl').html(success.d);
+                    //        $("#RecipeWindow1").dialog({ //סולמית מתייחסת ל-id
+                    //            autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                    //            show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    //                effect: "blind",
+                    //                duration: 1000
+                    //            },
+                    //            hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                    //                effect: "explode",
+                    //                duration: 1000
+                    //            }
+                    //        });
+
+                    //        $("#RecipeImageOpener1").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                    //            $("#RecipeWindow1").dialog("open");
+                    //        });
+                    //        $("#RecipeTextOpener1").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                    //            $("#RecipeWindow1").dialog("open");
+                    //        });
+
+                    //        $("#RecipeWindow2").dialog({ //סולמית מתייחסת ל-id
+                    //            autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                    //            show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    //                effect: "blind",
+                    //                duration: 1000
+                    //            },
+                    //            hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                    //                effect: "explode",
+                    //                duration: 1000
+                    //            }
+                    //        });
+
+                    //        $("#RecipeImageOpener2").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                    //            $("#RecipeWindow2").dialog("open");
+                    //        });
+                    //        $("#RecipeTextOpener2").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                    //            $("#RecipeWindow2").dialog("open");
+                    //        });
+
+                    //        $("#RecipeWindow3").dialog({ //סולמית מתייחסת ל-id
+                    //            autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
+                    //            show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    //                effect: "blind",
+                    //                duration: 1000
+                    //            },
+                    //            hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                    //                effect: "explode",
+                    //                duration: 1000
+                    //            }
+                    //        });
+
+                    //        $("#RecipeImageOpener3").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                    //            $("#RecipeWindow3").dialog("open");
+                    //        });
+                    //        $("#RecipeTextOpener3").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                    //            $("#RecipeWindow3").dialog("open");
+                    //        });
+                    //    },
+
+                    //    error: function (error) {
+                    //        debugger;
+                    //    }
+                    //});
         })
 
     </script>
@@ -185,7 +284,7 @@
     <tr>
         <td align="center">
 
-        <div id="RecipesTbl" dir="rtl" style="text-align:center; font-size:18px; font-family:Felix007 Medium Regular; width: 100%; margin-left: auto; margin-right;">
+        <div id="RecipesTbl" dir="rtl" style="text-align:center; font-size:18px; font-family:Felix007 Medium Regular; width: 100%; margin-left: auto; margin-right: auto;">
             <img src="images/loading.gif" style="width:130px;" />
         </div>
 </td>
