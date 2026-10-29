@@ -4,12 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>שבועות</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!--ג'ייקו'רי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) וזה בעצם ג'ווסקריפט ופה שמנו בגרסה 3.6.0-->
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--ג'ייקו'רי יואיי זה קובץ אחד ויחיד (תמיד הקובץ הזה שיש לו גרסאות שונות) חייב לשים קודם כל קישור לג'ייקו'רי כדי להשתמש בקישור הזה ליואיי ופה שמנו בגרסה 1.13.1-->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> <!-- סי אס אס של ג'ייק'רי יואיי, תמיד נשתמש בזה עוזר לאפקטים גם הוא קובץ אחד ויחיד לפי גרסה-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
     <style>
-        /*הוספת פונטים שהורדתי למחשב*/
         @font-face {
             font-family: "Felix007 Medium Regular";
             src: url("fonts/Felix007 Medium Regular.ttf");
@@ -55,7 +54,6 @@
             background-attachment: fixed;
         }
 
-        /*תגית מיוחדת של הזזת טקסט*/
         marquee {
             font-size: 26px;
             font-family: Felix007 Medium Regular;
@@ -79,7 +77,7 @@
             direction: rtl;
         }
 
-        /* כותרת של החלון הנפתח על כל תמונה שלוחצים עליה */
+        
         .ui-dialog .ui-dialog-title {
             width: 100%;
             text-align: center;
@@ -93,7 +91,7 @@
     </style>
 
             <script type="text/javascript">
-                $.support.cors = true; // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
+                $.support.cors = true; 
 
                 var recipeData = [
                     {
@@ -137,135 +135,63 @@
 
                     $('#RecipesTbl').html(recipeTable);
 
-                    $("#RecipeWindow1").dialog({ //סולמית מתייחסת ל-id
-                        autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                        show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    $("#RecipeWindow1").dialog({ 
+                        autoOpen: false, 
+                        show: { 
                             effect: "blind",
                             duration: 1000
                         },
-                        hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                        hide: { 
                             effect: "explode",
                             duration: 1000
                         }
                     });
 
-                    $("#RecipeImageOpener1").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                    $("#RecipeImageOpener1").on("click", function () { 
                         $("#RecipeWindow1").dialog("open");
                     });
-                    $("#RecipeTextOpener1").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                    $("#RecipeTextOpener1").on("click", function () { 
                         $("#RecipeWindow1").dialog("open");
                     });
 
-                    $("#RecipeWindow2").dialog({ //סולמית מתייחסת ל-id
-                        autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                        show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    $("#RecipeWindow2").dialog({ 
+                        autoOpen: false, 
+                        show: { 
                             effect: "blind",
                             duration: 1000
                         },
-                        hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                        hide: { 
                             effect: "explode",
                             duration: 1000
                         }
                     });
 
-                    $("#RecipeImageOpener2").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                    $("#RecipeImageOpener2").on("click", function () { 
                         $("#RecipeWindow2").dialog("open");
                     });
-                    $("#RecipeTextOpener2").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                    $("#RecipeTextOpener2").on("click", function () { 
                         $("#RecipeWindow2").dialog("open");
                     });
 
-                    $("#RecipeWindow3").dialog({ //סולמית מתייחסת ל-id
-                        autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                        show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
+                    $("#RecipeWindow3").dialog({ 
+                        autoOpen: false, 
+                        show: { 
                             effect: "blind",
                             duration: 1000
                         },
-                        hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
+                        hide: { 
                             effect: "explode",
                             duration: 1000
                         }
                     });
 
-                    $("#RecipeImageOpener3").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
+                    $("#RecipeImageOpener3").on("click", function () { 
                         $("#RecipeWindow3").dialog("open");
                     });
-                    $("#RecipeTextOpener3").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
+                    $("#RecipeTextOpener3").on("click", function () { 
                         $("#RecipeWindow3").dialog("open");
                     });
 
-
-                    //$.ajax({
-                    //    url: 'https://bsite.net/hinuch/RecipeWebForm.aspx/getRecipes',
-                    //    type: 'POST', //type- get/post, post גם אפשר לקבל וגם לשלוח נתונים, get רק לקבל נתונים,
-                    //    dataType: 'json', //הסוג הוא אובייקט
-                    //    contentType: 'application/json',
-                    //    crossDomain: true, // שמים כי הסרוויס והאתר לא באותה הכתובת.  בגלל פריצה אבטחת מידע
-
-                    //    success: function (success) {
-                    //        $('#RecipesTbl').html(success.d);
-                    //        $("#RecipeWindow1").dialog({ //סולמית מתייחסת ל-id
-                    //            autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                    //            show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
-                    //                effect: "blind",
-                    //                duration: 1000
-                    //            },
-                    //            hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
-                    //                effect: "explode",
-                    //                duration: 1000
-                    //            }
-                    //        });
-
-                    //        $("#RecipeImageOpener1").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
-                    //            $("#RecipeWindow1").dialog("open");
-                    //        });
-                    //        $("#RecipeTextOpener1").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
-                    //            $("#RecipeWindow1").dialog("open");
-                    //        });
-
-                    //        $("#RecipeWindow2").dialog({ //סולמית מתייחסת ל-id
-                    //            autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                    //            show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
-                    //                effect: "blind",
-                    //                duration: 1000
-                    //            },
-                    //            hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
-                    //                effect: "explode",
-                    //                duration: 1000
-                    //            }
-                    //        });
-
-                    //        $("#RecipeImageOpener2").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
-                    //            $("#RecipeWindow2").dialog("open");
-                    //        });
-                    //        $("#RecipeTextOpener2").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
-                    //            $("#RecipeWindow2").dialog("open");
-                    //        });
-
-                    //        $("#RecipeWindow3").dialog({ //סולמית מתייחסת ל-id
-                    //            autoOpen: false, //החלון לא פתוח כי הרי הוא נפתח רק בלחיצה על התמונה
-                    //            show: { //על פי ג'ייקו'רי יואיי שואו זה האפקט כאשר לוחצים במקרה שלנו זה על תמונה
-                    //                effect: "blind",
-                    //                duration: 1000
-                    //            },
-                    //            hide: { //על פי ג'ייקו'רי יואיי הייד זה כאשר עושים איקס על החלונית
-                    //                effect: "explode",
-                    //                duration: 1000
-                    //            }
-                    //        });
-
-                    //        $("#RecipeImageOpener3").on("click", function () { //האיידי של התמונה זה סנס אופנר אז מוגדר פה שכאשר לוחצים על התמונה הסונס ווינדו זה האיידי של הדיב אז הוא יפתח כדיאלוג של ג'ייקו'רי יואיי כלומר כחלון עם האיקס
-                    //            $("#RecipeWindow3").dialog("open");
-                    //        });
-                    //        $("#RecipeTextOpener3").on("click", function () { //כדי שגם כאשר לוחצים על הקישור יפתח החלון
-                    //            $("#RecipeWindow3").dialog("open");
-                    //        });
-                    //    },
-
-                    //    error: function (error) {
-                    //        debugger;
-                    //    }
-                    //});
         })
 
     </script>
